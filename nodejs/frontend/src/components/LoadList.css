@@ -1,0 +1,54 @@
+.load-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.carrier-group {
+  background-color: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.carrier-name {
+  margin-bottom: 1rem;
+  color: #2c3e50;
+  font-size: 1.3rem;
+}
+
+.aliases {
+  font-size: 0.9rem;
+  color: #666;
+  font-weight: normal;
+}
+
+.loads-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.loads-table thead {
+  background-color: #f8f9fa;
+}
+
+.loads-table th {
+  padding: 0.75rem;
+  text-align: left;
+  font-weight: 600;
+  border-bottom: 2px solid #dee2e6;
+  color: #495057;
+}
+
+.loads-table td {
+  padding: 0.75rem;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.no-loads {
+  text-align: center;
+  padding: 3rem;
+  color: #666;
+  font-size: 1.1rem;
+}
+

@@ -1,0 +1,37 @@
+# Node.js Frontend + Backend Container
+FROM node:18
+
+# Set working directory
+WORKDIR /app
+
+# Copy package files
+COPY nodejs/package*.json ./
+
+# Install backend dependencies
+RUN npm install
+
+# Install frontend dependencies
+COPY nodejs/frontend/package*.json ./frontend/
+RUN cd frontend && npm install
+
+# Install Playwright browsers
+RUN npx playwright install chromium
+RUN npx playwright install-deps chromium
+
+# Copy application code
+COPY nodejs/ .
+
+# Expose ports (adjust as needed)
+# Frontend typically on 3000, backend on 5000 or 8000
+EXPOSE 3000 5000
+
+# Set environment variables for React dev server
+# Note: PORT is set in the npm script, not here, to avoid conflicts
+ENV HOST=0.0.0.0
+ENV WDS_SOCKET_HOST=0.0.0.0
+ENV BROWSER=none
+
+# Start both frontend and backend
+# You can customize this based on your setup
+CMD ["npm", "start"]
+

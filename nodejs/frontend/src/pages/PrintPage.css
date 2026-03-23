@@ -1,0 +1,432 @@
+.print-page {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.page-header h2 {
+  color: #2c3e50;
+}
+
+.refresh-btn {
+  padding: 0.5rem 1rem;
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.refresh-btn:hover {
+  background-color: #5a6268;
+}
+
+.invoice-search-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.search-input {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 0.95rem;
+}
+
+.search-input.carrier-input {
+  min-width: 180px;
+}
+
+.search-input.date-input {
+  min-width: 140px;
+}
+
+.search-btn {
+  padding: 0.5rem 1rem;
+  background-color: #17a2b8;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.search-btn:hover {
+  background-color: #138496;
+}
+
+.invoice-table-wrap {
+  overflow-x: auto;
+  margin-top: 0.5rem;
+}
+
+.invoice-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+.invoice-table th,
+.invoice-table td {
+  padding: 0.6rem 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.invoice-table th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+  color: #495057;
+}
+
+.invoice-table td.invoice-actions-cell {
+  white-space: nowrap;
+}
+
+.invoice-table .table-btn {
+  padding: 0.35rem 0.6rem;
+  font-size: 0.85rem;
+  margin-right: 0.35rem;
+}
+
+.show-more-btn {
+  margin-top: 0.5rem;
+  padding: 0.4rem 0.8rem;
+  background: none;
+  border: 1px solid #007bff;
+  color: #007bff;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.show-more-btn:hover {
+  background-color: #e7f1ff;
+}
+
+.no-invoices {
+  text-align: center;
+  padding: 3rem;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.no-invoices p {
+  margin: 0.5rem 0;
+  color: #666;
+}
+
+.invoices-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.invoice-company-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.company-header {
+  margin: 0;
+  color: #2c3e50;
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #007bff;
+}
+
+.company-invoices {
+  display: block;
+}
+
+.invoice-card {
+  background-color: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.invoice-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.invoice-header h3,
+.invoice-header h4 {
+  margin: 0;
+  color: #2c3e50;
+}
+
+.invoice-header h4 {
+  font-size: 1.1rem;
+}
+
+.invoice-date {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.invoice-details {
+  margin-bottom: 1rem;
+}
+
+.invoice-details p {
+  margin: 0.5rem 0;
+  color: #495057;
+}
+
+.invoice-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.view-btn {
+  padding: 0.75rem 1.5rem;
+  background-color: #17a2b8;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-weight: 600;
+}
+
+.view-btn:hover {
+  background-color: #138496;
+}
+
+.download-btn {
+  padding: 0.75rem 1.5rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-weight: 600;
+}
+
+.download-btn:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+
+.download-btn:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+.paid-btn {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.paid-btn:hover:not(:disabled) {
+  background-color: #1f8a39;
+}
+
+.unpaid-btn {
+  background-color: #ffc107;
+  color: #212529;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.unpaid-btn:hover:not(:disabled) {
+  background-color: #e0a800;
+}
+
+.delete-btn {
+  padding: 0.75rem 1.5rem;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-weight: 600;
+}
+
+.delete-btn:hover:not(:disabled) {
+  background-color: #b02a37;
+}
+
+.delete-btn:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.badge.paid {
+  background: #d4edda;
+  color: #155724;
+}
+
+.badge.unpaid {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.paid-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1200;
+}
+
+.paid-modal {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1rem;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.paid-modal h3 {
+  margin: 0;
+  color: #2c3e50;
+}
+
+.paid-modal p {
+  margin: 0;
+  color: #555;
+}
+
+.paid-modal label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #495057;
+}
+
+.paid-modal input[type='date'] {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 0.95rem;
+}
+
+.paid-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.paid-modal-cancel-btn,
+.paid-modal-save-btn {
+  border: none;
+  border-radius: 4px;
+  padding: 0.45rem 0.8rem;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.paid-modal-cancel-btn {
+  background: #6c757d;
+  color: #fff;
+}
+
+.paid-modal-save-btn {
+  background: #28a745;
+  color: #fff;
+}
+
+.paid-modal-cancel-btn:disabled,
+.paid-modal-save-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.pdf-viewer-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+.pdf-viewer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 4px 4px 0 0;
+  margin-bottom: 0;
+}
+
+.pdf-viewer-header h3 {
+  margin: 0;
+  color: #2c3e50;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #666;
+  line-height: 1;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.close-btn:hover {
+  background-color: #f0f0f0;
+}
+
+.loading {
+  text-align: center;
+  padding: 3rem;
+  font-size: 1.2rem;
+  color: #666;
+}
+

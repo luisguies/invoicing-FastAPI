@@ -1,0 +1,213 @@
+.load-item {
+  transition: background-color 0.2s;
+}
+
+.load-item:hover {
+  background-color: #f8f9fa;
+}
+
+.load-item.cancelled {
+  opacity: 0.6;
+  text-decoration: line-through;
+  color: #999;
+}
+
+.load-item.driver-conflict {
+  background-color: #fff3cd;
+}
+
+.load-item.driver-conflict:hover {
+  background-color: #ffe8a1;
+}
+
+.load-item.driver-conflict .warning-icon {
+  color: #b45309;
+}
+
+.load-item.duplicate-conflict {
+  background-color: #e7f1ff;
+}
+
+.load-item.duplicate-conflict:hover {
+  background-color: #dbeafe;
+}
+
+.load-item.driver-conflict.duplicate-conflict {
+  background-color: #f3e8ff;
+}
+
+.load-item.driver-conflict.duplicate-conflict:hover {
+  background-color: #e9d5ff;
+}
+
+.load-item.needs-review {
+  background-color: #ffe6e6;
+}
+
+.load-item.editing input {
+  width: 100%;
+  padding: 4px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.warning-icon {
+  margin-right: 4px;
+  font-size: 1.2em;
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.actions button {
+  padding: 0.25rem 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: white;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.actions button:hover:not(:disabled) {
+  background-color: #f0f0f0;
+}
+
+.actions button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.cancel-btn {
+  background-color: #dc3545 !important;
+  color: white;
+}
+
+.uncancel-btn {
+  background-color: #28a745 !important;
+  color: white;
+}
+
+.delete-btn {
+  background-color: #dc3545 !important;
+  color: white;
+}
+
+.invoice-btn {
+  background-color: #007bff !important;
+  color: white;
+}
+
+.uninvoice-btn {
+  background-color: #6c757d !important;
+  color: white;
+}
+
+.view-rate-confirmation-btn {
+  background-color: #0d6efd !important;
+  color: white;
+}
+
+.view-rate-confirmation-btn:disabled {
+  background-color: #adb5bd !important;
+  color: #f8f9fa;
+}
+
+.amount {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.carrier-cell {
+  min-width: 250px;
+}
+
+.driver-cell {
+  min-width: 200px;
+}
+
+.driver-dropdown {
+  width: 100%;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  background-color: white;
+}
+
+.carrier-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.carrier-info {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.carrier-raw {
+  font-style: italic;
+}
+
+.carrier-dropdown {
+  padding: 0.25rem 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.alias-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: #666;
+  cursor: pointer;
+}
+
+.alias-checkbox input[type="checkbox"] {
+  cursor: pointer;
+}
+
+.confirm-carrier-btn {
+  padding: 0.25rem 0.5rem;
+  border: 1px solid #28a745;
+  border-radius: 4px;
+  background-color: #28a745;
+  color: white;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.confirm-carrier-btn:hover:not(:disabled) {
+  background-color: #218838;
+}
+
+.confirm-carrier-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.carrier-name {
+  font-weight: 500;
+}
+
+.invoiced-cell {
+  text-align: center;
+}
+
+.invoiced-checkbox {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: #007bff;
+}
+
+.invoiced-checkbox:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}

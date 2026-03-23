@@ -1,0 +1,491 @@
+.upload-old-invoices-page {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.upload-old-invoices-page h2 {
+  margin-bottom: 0.5rem;
+  color: #2c3e50;
+}
+
+.page-description {
+  color: #555;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+}
+
+.upload-old-area {
+  margin-bottom: 1.5rem;
+}
+
+.file-input {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.browse-btn {
+  padding: 0.75rem 1.5rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.browse-btn:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+
+.browse-btn:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+.parsed-table-wrap {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.parsed-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+.parsed-table th,
+.parsed-table td {
+  padding: 0.6rem 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.parsed-table th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+  color: #495057;
+}
+
+.parsed-table tr.invalid {
+  background-color: #fff5f5;
+}
+
+.parsed-table tr.invalid td {
+  color: #721c24;
+}
+
+.parsed-table .amount-col {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.parsed-table .amount-value {
+  font-weight: 600;
+  color: #155724;
+}
+
+.parsed-table .amount-error {
+  color: #721c24;
+  font-size: 0.85rem;
+}
+
+.parsed-table .amount-placeholder {
+  color: #adb5bd;
+}
+
+.extract-all-btn {
+  padding: 0.75rem 1.5rem;
+  background: #17a2b8;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.extract-all-btn:hover:not(:disabled) {
+  background: #138496;
+}
+
+.extract-all-btn:disabled {
+  background: #6c757d;
+  cursor: not-allowed;
+}
+
+.preview-amounts-btn {
+  padding: 0.6rem 1.25rem;
+  background: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.preview-amounts-btn:hover:not(:disabled) {
+  background: #5a6268;
+}
+
+.preview-amounts-btn:disabled {
+  background: #adb5bd;
+  cursor: not-allowed;
+}
+
+.status-ok {
+  color: #155724;
+  font-weight: 500;
+}
+
+.status-bad {
+  color: #721c24;
+  font-weight: 500;
+}
+
+.upload-submit-btn {
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.upload-submit-btn:hover:not(:disabled) {
+  background-color: #1e7e34;
+}
+
+.upload-submit-btn:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+.message {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+}
+
+.message.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.results-box {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 6px;
+  border: 1px solid #dee2e6;
+}
+
+.results-success {
+  margin: 0 0 0.5rem 0;
+  color: #155724;
+}
+
+.results-fail {
+  margin: 0.5rem 0 0 0;
+  padding-left: 1.25rem;
+  color: #721c24;
+  font-size: 0.9rem;
+}
+
+.link-btn {
+  background: none;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+  font-size: inherit;
+}
+
+.link-btn:hover {
+  color: #0056b3;
+}
+
+.nav-hint {
+  margin-top: 2rem;
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+/* Extract & Confirm flow */
+.action-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.extract-btn {
+  padding: 0.75rem 1.5rem;
+  background-color: #17a2b8;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.extract-btn:hover:not(:disabled) {
+  background-color: #138496;
+}
+
+.extract-btn:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+/* Confirmation step */
+.upload-old-invoices-page.confirm-step {
+  max-width: 100%;
+}
+
+.extracted-amounts-summary {
+  margin-bottom: 1.5rem;
+  padding: 1rem 1.25rem;
+  background: #e8f4fd;
+  border: 1px solid #b8daff;
+  border-radius: 8px;
+}
+
+.extracted-amounts-summary h3 {
+  margin: 0 0 0.75rem 0;
+  font-size: 1rem;
+  color: #0c5460;
+}
+
+.amounts-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.amount-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.amount-item .amount-label {
+  font-size: 0.85rem;
+  color: #495057;
+}
+
+.amount-item .amount-value {
+  font-size: 1.25rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: #0c5460;
+}
+
+.confirm-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.confirm-section {
+  background: white;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  border: 1px solid #dee2e6;
+}
+
+.confirm-section h3 {
+  margin: 0 0 0.75rem 0;
+  font-size: 1.1rem;
+  color: #2c3e50;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #eee;
+}
+
+.form-row {
+  margin-bottom: 0.75rem;
+}
+
+.form-row:last-child {
+  margin-bottom: 0;
+}
+
+.form-row label {
+  display: block;
+  font-size: 0.85rem;
+  color: #495057;
+  margin-bottom: 0.25rem;
+}
+
+.form-row input {
+  width: 100%;
+  padding: 0.5rem 0.6rem;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 0.95rem;
+}
+
+.form-row.two-cols,
+.form-row.three-cols {
+  display: grid;
+  gap: 1rem;
+}
+
+.form-row.two-cols {
+  grid-template-columns: 1fr 1fr;
+}
+
+.form-row.three-cols {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.group-section .confirm-lines-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.confirm-lines-table th,
+.confirm-lines-table td {
+  padding: 0.4rem 0.5rem;
+  border: 1px solid #dee2e6;
+  text-align: left;
+}
+
+.confirm-lines-table th {
+  background: #f8f9fa;
+  font-weight: 600;
+  color: #495057;
+}
+
+.confirm-lines-table input {
+  width: 100%;
+  padding: 0.35rem 0.5rem;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
+.confirm-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.back-btn {
+  padding: 0.75rem 1.5rem;
+  background: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.back-btn:hover:not(:disabled) {
+  background: #5a6268;
+}
+
+.save-extracted-btn {
+  padding: 0.75rem 1.5rem;
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.save-extracted-btn:hover:not(:disabled) {
+  background: #1e7e34;
+}
+
+.save-extracted-btn:disabled,
+.back-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Batch review step */
+.upload-old-invoices-page.batch-review-step {
+  max-width: 1000px;
+}
+
+.batch-review-table-wrap {
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.batch-review-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+.batch-review-table th,
+.batch-review-table td {
+  padding: 0.6rem 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.batch-review-table th {
+  background: #f8f9fa;
+  font-weight: 600;
+  color: #495057;
+}
+
+.batch-review-table th.num,
+.batch-review-table td.num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.batch-review-table tbody tr.row-error {
+  background: #fff5f5;
+  color: #721c24;
+}
+
+.batch-review-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  align-items: center;
+}
+
+.batch-confirm-results {
+  margin-top: 1rem;
+}
+
+.batch-confirm-results .results-success {
+  margin: 0 0 0.5rem 0;
+  color: #155724;
+}
+
+.batch-confirm-results .results-fail {
+  margin: 0.5rem 0 0 0;
+  padding-left: 1.25rem;
+  color: #721c24;
+  font-size: 0.9rem;
+}
+
+.batch-confirm-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  align-items: center;
+}

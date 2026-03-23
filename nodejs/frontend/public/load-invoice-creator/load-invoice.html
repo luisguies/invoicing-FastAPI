@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Load Invoice Creator</title>
+    <link rel="stylesheet" href="load-invoice-styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="header">
+        <div>
+          <h1>Load Invoice Creator</h1>
+          <p class="subtle">Fill the form, click <strong>Generate invoice</strong>, then print.</p>
+        </div>
+      </header>
+
+      <main class="grid">
+        <section class="card">
+          <h2>Invoice input</h2>
+
+          <form id="invoice-form" class="form" autocomplete="off">
+            <div class="form-invoice">
+              <div class="form-inv-header">
+                <div class="form-inv-left">
+                  <div class="form-inv-title">Invoice</div>
+                  <div class="subtle">The preview on the right is what will print.</div>
+                </div>
+                <div class="form-inv-right">
+                  <div class="row" style="grid-template-columns: 1fr;">
+                    <div class="field">
+                      <label for="invoiceNumber">Invoice #</label>
+                      <input id="invoiceNumber" name="invoiceNumber" type="text" placeholder="e.g. INV-10023" required />
+                    </div>
+                    <div class="field">
+                      <label for="invoiceDate">Invoice date</label>
+                      <input id="invoiceDate" name="invoiceDate" type="date" required />
+                    </div>
+                    <div class="field">
+                      <label for="dueDate">Due date</label>
+                      <input id="dueDate" name="dueDate" type="date" required />
+                    </div>
+                    <div class="field">
+                      <label for="rate">Amount (Rate)</label>
+                      <input id="rate" name="rate" type="text" placeholder="e.g. 1500.00" required />
+                      <div class="hint">Tip: enter numbers like <strong>1500</strong> or <strong>1500.00</strong> (USD).</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-parties">
+                <div class="form-party">
+                  <div class="form-party-title">Bill To (Broker):</div>
+                  <div class="field">
+                    <label for="brokerName">Broker name</label>
+                    <input id="brokerName" name="brokerName" type="text" placeholder="Broker company name" required />
+                  </div>
+                  <div class="field">
+                    <label for="brokerAddress">Broker address</label>
+                    <textarea
+                      id="brokerAddress"
+                      name="brokerAddress"
+                      rows="3"
+                      placeholder="Street, City, State ZIP"
+                      required
+                    ></textarea>
+                  </div>
+                </div>
+
+                <div class="form-party">
+                  <div class="form-party-title">Payable To (Carrier):</div>
+                  <div class="field">
+                    <label for="carrierName">Carrier name</label>
+                    <input id="carrierName" name="carrierName" type="text" placeholder="Carrier company name" required />
+                  </div>
+                  <div class="field">
+                    <label for="carrierAddress">Carrier address</label>
+                    <textarea
+                      id="carrierAddress"
+                      name="carrierAddress"
+                      rows="3"
+                      placeholder="Street, City, State ZIP"
+                      required
+                    ></textarea>
+                  </div>
+                  <div class="field">
+                    <label for="paymentOption">Payment options</label>
+                    <select id="paymentOption" name="paymentOption" required>
+                      <option value="Check">Check</option>
+                      <option value="Zelle">Zelle</option>
+                      <option value="ACH">ACH</option>
+                    </select>
+                  </div>
+
+                  <div id="zelleFields" class="conditional hidden" aria-hidden="true">
+                    <div class="field">
+                      <label for="zellePhone">Zelle phone number</label>
+                      <input id="zellePhone" name="zellePhone" type="tel" placeholder="e.g. (555) 555-5555" />
+                    </div>
+                  </div>
+
+                  <div id="achFields" class="conditional hidden" aria-hidden="true">
+                    <div class="row">
+                      <div class="field">
+                        <label for="achRouting">ACH routing #</label>
+                        <input id="achRouting" name="achRouting" type="text" inputmode="numeric" placeholder="Routing number" />
+                      </div>
+                      <div class="field">
+                        <label for="achAccount">ACH bank account #</label>
+                        <input id="achAccount" name="achAccount" type="text" inputmode="numeric" placeholder="Account number" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-load">
+                <div class="form-load-title">Load</div>
+                <div class="form-load-grid">
+                  <div class="field">
+                    <label for="pickupDate">Pickup date</label>
+                    <input id="pickupDate" name="pickupDate" type="date" required />
+                  </div>
+                  <div class="field">
+                    <label for="deliveryDate">Delivery date</label>
+                    <input id="deliveryDate" name="deliveryDate" type="date" required />
+                  </div>
+                  <div class="field">
+                    <label for="driverName">Driver</label>
+                    <input id="driverName" name="driverName" type="text" placeholder="Driver name" required />
+                  </div>
+                </div>
+
+                <table class="form-table" aria-label="Load table inputs">
+                  <thead>
+                    <tr>
+                      <th>Origin (Pickup address)</th>
+                      <th>Destination (Delivery address)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <textarea
+                          id="pickupAddress"
+                          name="pickupAddress"
+                          rows="3"
+                          placeholder="Street, City, State ZIP"
+                          required
+                        ></textarea>
+                      </td>
+                      <td>
+                        <textarea
+                          id="deliveryAddress"
+                          name="deliveryAddress"
+                          rows="3"
+                          placeholder="Street, City, State ZIP"
+                          required
+                        ></textarea>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="actions">
+              <button type="button" id="generateBtn" class="btn primary">Generate invoice</button>
+              <button type="button" id="printBtn" class="btn" disabled>Print</button>
+              <button type="button" id="clearBtn" class="btn subtle-btn">Clear</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="card preview">
+          <div class="preview-header">
+            <h2>Preview</h2>
+            <div class="subtle">This is exactly what will print.</div>
+          </div>
+
+          <div id="invoice-root" class="invoice-wrap" aria-live="polite">
+            <div class="empty">
+              <div class="empty-title">No invoice yet</div>
+              <div class="subtle">Complete the form and click <strong>Generate invoice</strong>.</div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer subtle">
+        Built for fast carrier invoicing. Print from your browser after generating.
+      </footer>
+    </div>
+
+    <script src="load-invoice.js"></script>
+  </body>
+</html>
+

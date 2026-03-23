@@ -1,0 +1,177 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Invoice</title>
+  <style>
+    /* Page + print */
+    @page { size: Letter; margin: 0.6in; }
+    * { box-sizing: border-box; }
+    body { font-family: Arial, Helvetica, sans-serif; color: #111; font-size: 11px; }
+
+    .row { display: flex; gap: 16px; }
+    .col { flex: 1; }
+    .muted { color: #444; }
+    .small { font-size: 10px; }
+    .right { text-align: right; }
+    .nowrap { white-space: nowrap; }
+    .mt8 { margin-top: 8px; }
+    .mt12 { margin-top: 12px; }
+    .mt16 { margin-top: 16px; }
+
+    /* Header */
+    .header { display: flex; align-items: flex-start; justify-content: space-between; }
+    .invoice-title { font-size: 22px; font-weight: 700; letter-spacing: 0.4px; }
+    .invoice-meta { text-align: right; min-width: 240px; }
+    .invoice-meta .line { display: flex; justify-content: space-between; gap: 10px; }
+    .invoice-meta .label { color: #444; }
+    .invoice-meta .value { font-weight: 600; }
+
+    /* Bill blocks */
+    .block { border: 1px solid #111; padding: 10px; }
+    .block h3 { margin: 0 0 6px 0; font-size: 12px; }
+    .block .name { font-weight: 700; font-size: 12px; }
+    .block .line { margin-top: 2px; }
+
+    /* Balance due */
+    .balance { display: flex; justify-content: flex-end; align-items: baseline; gap: 10px; }
+    .balance .label { font-size: 12px; font-weight: 700; }
+    .balance .value { font-size: 18px; font-weight: 800; }
+
+    /* Loads table */
+    table { width: 100%; border-collapse: collapse; }
+    thead th {
+      border-bottom: 1px solid #111;
+      padding: 6px 6px;
+      font-weight: 700;
+      text-align: left;
+    }
+    tbody td {
+      border-bottom: 1px solid #ddd;
+      padding: 6px 6px;
+      vertical-align: top;
+    }
+
+    /* Group header rows like "LEDIF 5%" */
+    .group-row td {
+      border-bottom: 0;
+      padding: 10px 6px 4px 6px;
+      font-weight: 700;
+    }
+    .group-row .group-name { font-size: 12px; }
+    .group-row .group-rate { font-size: 12px; margin-left: 6px; }
+
+    /* Numeric columns */
+    .num { text-align: right; font-variant-numeric: tabular-nums; }
+    .rate { text-align: right; }
+
+    /* Footer totals */
+    .footer { margin-top: 14px; display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; }
+    .thanks { font-size: 11px; }
+    .totals { min-width: 280px; }
+    .totals .trow { display: flex; justify-content: space-between; padding: 4px 0; }
+    .totals .trow.total { border-top: 1px solid #111; padding-top: 8px; margin-top: 6px; font-weight: 800; }
+    .totals .label { color: #222; }
+    .totals .value { font-variant-numeric: tabular-nums; }
+
+    /* Slightly tighter to resemble your sample */
+    .tight td { padding-top: 5px; padding-bottom: 5px; }
+  </style>
+</head>
+
+<body>
+
+  <!-- TOP HEADER -->
+  <div class="header">
+    <div>
+      <div class="invoice-title">Invoice</div>
+      <div class="small muted mt8">We thank you for your continued business.</div>
+    </div>
+
+    <div class="invoice-meta">
+      <div class="line"><span class="label">Invoice #</span><span class="value">{{invoiceNumber}}</span></div>
+      <div class="line"><span class="label">Date</span><span class="value">{{invoiceDate}}</span></div>
+      <div class="line"><span class="label">Due Date</span><span class="value">{{dueDate}}</span></div>
+    </div>
+  </div>
+
+  <!-- BALANCE DUE -->
+  <div class="balance mt12">
+    <div class="label">Balance Due</div>
+    <div class="value">${{balanceDue}}</div>
+  </div>
+
+  <!-- BILL TO / PAYABLE TO -->
+  <div class="row mt12">
+    <div class="col block">
+      <h3>Bill To:</h3>
+      <div class="name">{{billToName}}</div>
+      <div class="line">{{billToCityStateZip}}</div>
+      <div class="line">{{billToPhone}}</div>
+    </div>
+    <div class="col block">
+      <h3>Payable To:</h3>
+      <div class="name">{{payableToName}}</div>
+      <div class="line">{{payableToCityStateZip}}</div>
+      <div class="line">{{payableToPhone}}</div>
+    </div>
+  </div>
+
+  <!-- LOADS TABLE -->
+  <div class="mt16">
+    <table class="tight">
+      <thead>
+        <tr>
+          <th class="nowrap">Pickup Date</th>
+          <th class="nowrap">Delivery Date</th>
+          <th class="nowrap">Origin</th>
+          <th class="nowrap">Destination</th>
+          <th class="nowrap num">Price</th>
+          <th class="nowrap rate">Rate</th>
+          <th class="nowrap num">Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <!-- GROUP EXAMPLE -->
+        {{#each groups}}
+          <tr class="group-row">
+            <td colspan="9">
+              <span class="group-name">{{this.groupLabel}}</span>
+              <span class="group-rate muted">{{this.groupRate}}</span>
+            </td>
+          </tr>
+
+          {{#each this.lines}}
+          <tr>
+            <td class="nowrap">{{this.pickupDate}}</td>
+            <td class="nowrap">{{this.deliveryDate}}</td>
+            <td class="nowrap">{{this.originCityState}}</td>
+            <td class="nowrap">{{this.destCityState}}</td>
+            <td class="num">${{this.price}}</td>
+            <td class="rate">{{this.ratePercent}}</td>
+            <td class="num">${{this.amount}}</td>
+          </tr>
+          {{/each}}
+        {{/each}}
+
+      </tbody>
+    </table>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="thanks">
+      <div><span class="muted">CTA:</span> {{cta}}</div>
+      <div><span class="muted">Payment:</span> {{paymentLine}}</div>
+    </div>
+
+    <div class="totals">
+      <div class="trow"><span class="label">Subtotal:</span><span class="value">${{subtotal}}</span></div>
+      <div class="trow"><span class="label">Postage:</span><span class="value">${{postage}}</span></div>
+      <div class="trow total"><span class="label">Total:</span><span class="value">${{total}}</span></div>
+    </div>
+  </div>
+
+</body>
+</html>
